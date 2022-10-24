@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/fluid.png">
-  <link rel="icon" href="/project/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,11 +19,11 @@
     <meta name="description" content="DTOJ 5932 题解认识到了生成函数很好用，于是摆了一篇题解 10分直接dp，$f_{i,j}$ 表示走了 $i$ 步之后，当前位置在  $j$ 的方案数 然后就有状态转移方程 $f_{i,j}&#x3D;f_{i-1,j-1}+f_{i-1,j}+f_{i-1,j+1}$ 时间复杂度 $\Theta(nm)$ 40~50分相信大家都会矩阵快速幂$$\begin {bmatrix}1 &amp;amp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DTOJ 5932 题解">
-<meta property="og:url" content="http://coppercarbonate.github.io/project/2022/10/22/DTOJ%205932%20%E9%A2%98%E8%A7%A3/">
+<meta property="og:url" content="http://coppercarbonate.github.io/2022/10/22/DTOJ%205932%20%E9%A2%98%E8%A7%A3/">
 <meta property="og:site_name" content="碱式碳酸铜的博客">
 <meta property="og:description" content="DTOJ 5932 题解认识到了生成函数很好用，于是摆了一篇题解 10分直接dp，$f_{i,j}$ 表示走了 $i$ 步之后，当前位置在  $j$ 的方案数 然后就有状态转移方程 $f_{i,j}&#x3D;f_{i-1,j-1}+f_{i-1,j}+f_{i-1,j+1}$ 时间复杂度 $\Theta(nm)$ 40~50分相信大家都会矩阵快速幂$$\begin {bmatrix}1 &amp;amp">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://coppercarbonate.github.io/project/img/background/emilia.jpg">
+<meta property="og:image" content="http://coppercarbonate.github.io/img/background/emilia.jpg">
 <meta property="article:published_time" content="2022-10-22T09:21:00.000Z">
 <meta property="article:modified_time" content="2022-10-22T10:51:33.229Z">
 <meta property="article:author" content="CopperCarbonate">
@@ -31,7 +31,7 @@
 <meta property="article:tag" content="组合">
 <meta property="article:tag" content="生成函数，求导">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://coppercarbonate.github.io/project/img/background/emilia.jpg">
+<meta name="twitter:image" content="http://coppercarbonate.github.io/img/background/emilia.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -61,12 +61,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -75,15 +75,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"coppercarbonate.github.io","root":"/project/","version":"1.9.3","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"coppercarbonate.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -100,7 +100,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>碱式碳酸铜的博客</strong>
     </a>
 
@@ -119,7 +119,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -131,7 +131,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -143,7 +143,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -155,7 +155,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -167,7 +167,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -196,7 +196,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -287,7 +287,7 @@
 <h3 id="80-90分"><a href="#80-90分" class="headerlink" title="80~90分"></a>80~90分</h3><p>相信大家都学过 Catalan 数</p>
 <p>我们先枚举走的 $n $ 步中，有 $k$ 次是移动，$n-k$ 次是原地不动，有 $\binom{n}{k}$ 种方法</p>
 <p>把向左移动记为 $(1,1)$，向右移动记为 $(1,-1)$，则可以表示成下图这样</p>
-<p><img src="/project/%22/img/post_img/DTOJ_5932_pic1.png%22" srcset="/project/img/loading.gif" lazyload></p>
+<p><img src="/%22/img/post_img/DTOJ_5932_pic1.png%22" srcset="/img/loading.gif" lazyload></p>
 <p>这边比 Catalan 数那个图多了一条线，于是我们考虑容斥，可以得到：</p>
 <p>方案数 $&#x3D;$ 总路径数 </p>
 <p>$-$ 越过 $y&#x3D;m$ 的路径数 $-$ 越过 $y&#x3D;0$ 的路径数 </p>
@@ -329,11 +329,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/dp/">#dp</a>
+        <a href="/tags/dp/">#dp</a>
       
-        <a href="/project/tags/%E7%BB%84%E5%90%88/">#组合</a>
+        <a href="/tags/%E7%BB%84%E5%90%88/">#组合</a>
       
-        <a href="/project/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%EF%BC%8C%E6%B1%82%E5%AF%BC/">#生成函数，求导</a>
+        <a href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%EF%BC%8C%E6%B1%82%E5%AF%BC/">#生成函数，求导</a>
       
     </div>
   
@@ -346,7 +346,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>DTOJ 5932 题解</div>
-      <div>http://coppercarbonate.github.io/project/2022/10/22/DTOJ 5932 题解/</div>
+      <div>http://coppercarbonate.github.io/2022/10/22/DTOJ 5932 题解/</div>
     </div>
     <div class="license-meta">
       
@@ -394,7 +394,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/10/22/DTOJ%205769%20%E9%A2%98%E8%A7%A3/" title="DTOJ 5769 题解">
+                      <a href="/2022/10/22/DTOJ%205769%20%E9%A2%98%E8%A7%A3/" title="DTOJ 5769 题解">
                         <span class="hidden-mobile">DTOJ 5769 题解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -551,8 +551,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -574,7 +574,7 @@
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -716,7 +716,7 @@
 
   <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -726,7 +726,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
