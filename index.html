@@ -225,6 +225,46 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/11/04/%E5%B0%8F%E7%A7%91%E6%8A%80-mt19937-%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0/" target="_self">
+          小科技 mt19937 生成随机数
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/04/%E5%B0%8F%E7%A7%91%E6%8A%80-mt19937-%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0/" target="_self">
+        <div>
+          学到了一个比 rand() 更随的随机数： 随机整数： 123456mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());int rnd(int l, int r)&#123;	assert(r&gt;=l);	return uniform_int_distribution&lt;&gt;(l,r)(rng);&#1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-04 15:52" pubdate>
+              2022-11-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%A7%91%E6%8A%80/">#科技</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/11/03/%E5%8A%A8%E6%80%81-dp-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
           动态 dp 学习笔记
         </a>
@@ -627,51 +667,13 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/10/22/DTOJ-5769-%E4%B8%8B%E6%A3%8B-%E9%A2%98%E8%A7%A3/" target="_self">
-          DTOJ 5769 下棋 题解
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/22/DTOJ-5769-%E4%B8%8B%E6%A3%8B-%E9%A2%98%E8%A7%A3/" target="_self">
-        <div>
-          DTOJ 5769 下棋 题解题目链接http://59.61.75.5:8018/p/P5769 题解首先比较容易想到 $dp$ , 因为任意一段绝对值不超过 $k$ ，所以白棋个数减黑棋个数要在 $[-k,k]$ 区间里，我们于是考虑把状态设为白棋减黑棋个数的最大值和最小值.  具体来说 $f_{i,j,a,b}$ 表示用了 $i$ 个白，$j$ 个黑， 白减黑最大值和最小值分别为 $a,b$
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-22 17:20" pubdate>
-              2022-10-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/dp/">#dp</a>
-            
-              <a href="/tags/%E7%BB%84%E5%90%88/">#组合</a>
-            
-              <a href="/tags/%E5%AE%B9%E6%96%A5/">#容斥</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
 
 
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
 
 
 
