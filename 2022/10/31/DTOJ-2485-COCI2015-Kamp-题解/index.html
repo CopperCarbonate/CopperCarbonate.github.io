@@ -16,12 +16,12 @@
   <meta name="author" content="CopperCarbonate">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题面http:&#x2F;&#x2F;59.61.75.5:8018&#x2F;p&#x2F;P2485 题解典型的换根 dp 题，一直没去写，今天补完了. 首先我们考虑如果从 $1$ 号节点开始怎么做 注意到如果需要回到根节点，答案是好维护的. 记 $f_u$ 表示从 $u$ 出发，走完所有 $u$ 子树内的点，回到 $u$ 的最小路程. 那么不需要回到根节点的答案就是 $ans_u&#x3D;f_u-\max\{d_u\}$ ，$d_u$ 是">
+    <meta name="description" content="题面http:&#x2F;&#x2F;59.61.75.5:8018&#x2F;p&#x2F;P2485 题解典型的换根 dp 题，一直没去写，今天补完了. 首先我们考虑如果从 $1$ 号节点开始怎么做 注意到如果需要回到根节点，答案是好维护的. 记 $f_u$ 表示从 $u$ 出发，走完所有 $u$ 子树内的点，回到 $u$ 的最小路程. 那么不需要回到根节点的答案就是 $ans_u&#x3D;f_u-\max{d_u}$ ，$d_u$ 是 $">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DTOJ 2485 COCI2015 Kamp 题解">
 <meta property="og:url" content="http://coppercarbonate.github.io/2022/10/31/DTOJ-2485-COCI2015-Kamp-%E9%A2%98%E8%A7%A3/">
 <meta property="og:site_name" content="碱式碳酸铜的博客">
-<meta property="og:description" content="题面http:&#x2F;&#x2F;59.61.75.5:8018&#x2F;p&#x2F;P2485 题解典型的换根 dp 题，一直没去写，今天补完了. 首先我们考虑如果从 $1$ 号节点开始怎么做 注意到如果需要回到根节点，答案是好维护的. 记 $f_u$ 表示从 $u$ 出发，走完所有 $u$ 子树内的点，回到 $u$ 的最小路程. 那么不需要回到根节点的答案就是 $ans_u&#x3D;f_u-\max\{d_u\}$ ，$d_u$ 是">
+<meta property="og:description" content="题面http:&#x2F;&#x2F;59.61.75.5:8018&#x2F;p&#x2F;P2485 题解典型的换根 dp 题，一直没去写，今天补完了. 首先我们考虑如果从 $1$ 号节点开始怎么做 注意到如果需要回到根节点，答案是好维护的. 记 $f_u$ 表示从 $u$ 出发，走完所有 $u$ 子树内的点，回到 $u$ 的最小路程. 那么不需要回到根节点的答案就是 $ans_u&#x3D;f_u-\max{d_u}$ ，$d_u$ 是 $">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-31T08:52:10.000Z">
 <meta property="article:modified_time" content="2022-11-02T11:52:28.009Z">
@@ -233,7 +233,7 @@
         
         
         
-          18 分钟
+          17 分钟
         
       </span>
     
@@ -281,11 +281,11 @@
 <p>首先我们考虑如果从 $1$ 号节点开始怎么做</p>
 <p>注意到如果需要回到根节点，答案是好维护的.</p>
 <p>记 $f_u$ 表示从 $u$ 出发，走完所有 $u$ 子树内的点，回到 $u$ 的最小路程.</p>
-<p>那么不需要回到根节点的答案就是 $ans_u=f_u-\max\{d_u\}$ ，$d_u$ 是 $u$ 到 $1$ 的距离</p>
+<p>那么不需要回到根节点的答案就是 $ans_u=f_u-\max{d_u}$ ，$d_u$ 是 $u$ 到 $1$ 的距离</p>
 <p>状态转移也是容易的 </p>
 <script type="math/tex; mode=display">
 f_u=\sum_{f_v>0\or v\in S}(f_v+2w_{u,v})\\
-mx_u=\max\{mx_v+w_{u,v}\}\\</script><p>（ $mx_u$ 表示 $\max\{d_u\}$ , $S$ 表示 $k$ 个特殊点的集合）</p>
+mx_u=\max\{mx_v+w_{u,v}\}\\</script><p>（ $mx_u$ 表示 $\max{d_u}$ , $S$ 表示 $k$ 个特殊点的集合）</p>
 <p>考虑如何换根 dp</p>
 <p>$f_u$ 是好换根的</p>
 <script type="math/tex; mode=display">

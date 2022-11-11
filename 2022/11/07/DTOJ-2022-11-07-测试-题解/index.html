@@ -16,12 +16,12 @@
   <meta name="author" content="CopperCarbonate">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Aportal 题目大意长度为 $n$ 的数列，给 $m$ 条信息：从  $x,y$ 开始的最长公共前缀的长度是 $z$，要求字典序最小. （$1 \le m \le 1000$，$1 \le n \le 1000$） 题解每个信息可以被拆成最多 $n$ 条信息，$a_x&#x3D;a_y,\ a_{x+1}&#x3D;a_{y+1},\cdots,a_{x+z-1}&#x3D;a_{y+z-1},a_{x+z}\ne a_{">
+    <meta name="description" content="Aportal 题目大意长度为 $n$ 的数列，给 $m$ 条信息：从  $x,y$ 开始的最长公共前缀的长度是 $z$，要求字典序最小. （$1 \le m \le 1000$，$1 \le n \le 1000$） 题解每个信息可以被拆成最多 $n$ 条信息，$ax&#x3D;a_y,\ a{x+1}&#x3D;a{y+1},\cdots,a{x+z-1}&#x3D;a{y+z-1},a{x+z}\ne a_{y+z}$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DTOJ 2022-11-07 测试 题解">
 <meta property="og:url" content="http://coppercarbonate.github.io/2022/11/07/DTOJ-2022-11-07-%E6%B5%8B%E8%AF%95-%E9%A2%98%E8%A7%A3/">
 <meta property="og:site_name" content="碱式碳酸铜的博客">
-<meta property="og:description" content="Aportal 题目大意长度为 $n$ 的数列，给 $m$ 条信息：从  $x,y$ 开始的最长公共前缀的长度是 $z$，要求字典序最小. （$1 \le m \le 1000$，$1 \le n \le 1000$） 题解每个信息可以被拆成最多 $n$ 条信息，$a_x&#x3D;a_y,\ a_{x+1}&#x3D;a_{y+1},\cdots,a_{x+z-1}&#x3D;a_{y+z-1},a_{x+z}\ne a_{">
+<meta property="og:description" content="Aportal 题目大意长度为 $n$ 的数列，给 $m$ 条信息：从  $x,y$ 开始的最长公共前缀的长度是 $z$，要求字典序最小. （$1 \le m \le 1000$，$1 \le n \le 1000$） 题解每个信息可以被拆成最多 $n$ 条信息，$ax&#x3D;a_y,\ a{x+1}&#x3D;a{y+1},\cdots,a{x+z-1}&#x3D;a{y+z-1},a{x+z}\ne a_{y+z}$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-07T14:52:59.000Z">
 <meta property="article:modified_time" content="2022-11-07T15:09:38.179Z">
@@ -278,7 +278,7 @@
                 <h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p><a target="_blank" rel="noopener" href="http://59.61.75.5:18018/p/P6340">portal</a></p>
 <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>长度为 $n$ 的数列，给 $m$ 条信息：从  $x,y$ 开始的最长公共前缀的长度是 $z$，要求字典序最小.</p>
 <p>（$1 \le m \le 1000$，$1 \le n \le 1000$）</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>每个信息可以被拆成最多 $n$ 条信息，$a_x=a_y,\ a_{x+1}=a_{y+1},\cdots,a_{x+z-1}=a_{y+z-1},a_{x+z}\ne a_{y+z}$</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>每个信息可以被拆成最多 $n$ 条信息，$a<em>x=a_y,\ a</em>{x+1}=a<em>{y+1},\cdots,a</em>{x+z-1}=a<em>{y+z-1},a</em>{x+z}\ne a_{y+z}$</p>
 <p>这些是很好用并查集维护的.</p>
 <p>首先把相等的下标合并起来，再判一下有没有不等关系在相同集合里，就可以判断可行性.</p>
 <p>现在考虑字典序怎么最小.</p>

@@ -282,9 +282,9 @@
 <p>在满天的星光下，灰大狼一人孤独地堆起了小沙丘。有 $n$ 堆沙丘，每堆沙丘有相对高度 $h_i$，每次灰大狼可以选择一段连续的沙丘并将它们高度增加或减少 $a$ 或 $b$，其中 $a,b$ 给定，灰大狼想知道最少要几次才能把所有沙丘的相对高度都变成 $0$。如果无解请输出 <code>-1</code>。</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>首先看到是 “一段连续的沙丘”，果断考虑差分. </p>
 <p>差分完增加或减小 $a$ 或 $b$ 可以被转化成两个位置上分别  $+a, -a$  或 $+b, -b$  </p>
-<p>最后每个位置上一定是 $xa+yb$ 的形式，记差分数组为 $\{d_i\}$，则 $xa+yb=d_i$ </p>
+<p>最后每个位置上一定是 $xa+yb$ 的形式，记差分数组为 ${d_i}$，则 $xa+yb=d_i$ </p>
 <p>显然是可以 exgcd 求出一组特解 $x_0,y_0$</p>
-<p>于是通解可以表示成 $\begin{cases}x=x_0+\frac{b}{\gcd(a,b)}\cdot k\\ y=y_0-\frac{a}{\gcd(a,b)}\cdot k\end{cases}$</p>
+<p>于是通解可以表示成 $\begin{cases}x=x_0+\frac{b}{\gcd(a,b)}\cdot k\ y=y_0-\frac{a}{\gcd(a,b)}\cdot k\end{cases}$</p>
 <p>最后答案即 $\frac{1}{2}\sum(|x|+|y|)$</p>
 <p>测试的时候我直接调整每个 $x,y$ 使 $|x|+|y|$ 最小. </p>
 <p>$|x|+|y|=|x_0+\frac{b}{\gcd(a,b)}\cdot k|+ |y_0-\frac{a}{\gcd(a,b)}\cdot k|$</p>
