@@ -16,26 +16,25 @@
   <meta name="author" content="CopperCarbonate">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DTOJ 5769 下棋 题解题目链接http:&#x2F;&#x2F;59.61.75.5:8018&#x2F;p&#x2F;P5769 题解首先比较容易想到 $dp$ , 因为任意一段绝对值不超过 $k$ ，所以白棋个数减黑棋个数要在 $[-k,k]$ 区间里，我们于是考虑把状态设为白棋减黑棋个数的最大值和最小值.  具体来说 $f_{i,j,a,b}$ 表示用了 $i$ 个白，$j$ 个黑， 白减黑最大值和最小值分别为 $a,b$">
+    <meta name="description" content="引入一个小知识，稍微学一下 其实 prufer 序列就是一种将带标号的树用一个唯一的整数序列表示的方法. （小知识 prüfer 是德语，所以应该读作&#x2F;代码里应该写作 pruefer） 定义每次选择一个编号最小的叶结点并删掉它，然后在序列中记录下它连接到的那个结点。重复 $n-2$ 次后就只剩下两个结点 終わった！很简单的啦（ 小性质 是一个双射（一一对应） 在构造完 prufer 序列后原树中会">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DTOJ 5769 下棋 题解">
-<meta property="og:url" content="http://coppercarbonate.github.io/2022/10/22/DTOJ-5769-%E4%B8%8B%E6%A3%8B-%E9%A2%98%E8%A7%A3/">
+<meta property="og:title" content="prufer序列 学习笔记">
+<meta property="og:url" content="http://coppercarbonate.github.io/2022/11/07/prufer%E5%BA%8F%E5%88%97-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 <meta property="og:site_name" content="碱式碳酸铜的博客">
-<meta property="og:description" content="DTOJ 5769 下棋 题解题目链接http:&#x2F;&#x2F;59.61.75.5:8018&#x2F;p&#x2F;P5769 题解首先比较容易想到 $dp$ , 因为任意一段绝对值不超过 $k$ ，所以白棋个数减黑棋个数要在 $[-k,k]$ 区间里，我们于是考虑把状态设为白棋减黑棋个数的最大值和最小值.  具体来说 $f_{i,j,a,b}$ 表示用了 $i$ 个白，$j$ 个黑， 白减黑最大值和最小值分别为 $a,b$">
+<meta property="og:description" content="引入一个小知识，稍微学一下 其实 prufer 序列就是一种将带标号的树用一个唯一的整数序列表示的方法. （小知识 prüfer 是德语，所以应该读作&#x2F;代码里应该写作 pruefer） 定义每次选择一个编号最小的叶结点并删掉它，然后在序列中记录下它连接到的那个结点。重复 $n-2$ 次后就只剩下两个结点 終わった！很简单的啦（ 小性质 是一个双射（一一对应） 在构造完 prufer 序列后原树中会">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-22T09:20:00.000Z">
-<meta property="article:modified_time" content="2022-11-02T11:53:13.794Z">
+<meta property="article:published_time" content="2022-11-07T15:57:31.000Z">
+<meta property="article:modified_time" content="2022-11-07T23:48:12.440Z">
 <meta property="article:author" content="CopperCarbonate">
-<meta property="article:tag" content="dp">
-<meta property="article:tag" content="组合">
-<meta property="article:tag" content="容斥">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="prufer序列">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>DTOJ 5769 下棋 题解 - 碱式碳酸铜的博客</title>
+  <title>prufer序列 学习笔记 - 碱式碳酸铜的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DTOJ 5769 下棋 题解"></span>
+            <span id="subtitle" data-typed-text="prufer序列 学习笔记"></span>
           
         </div>
 
@@ -211,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-22 17:20" pubdate>
-          2022年10月22日 下午
+        <time datetime="2022-11-07 23:57" pubdate>
+          2022年11月7日 晚上
         </time>
       </span>
     
@@ -223,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          551 字
+          1.5k 字
         
       </span>
     
@@ -234,7 +233,7 @@
         
         
         
-          5 分钟
+          13 分钟
         
       </span>
     
@@ -272,18 +271,33 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">DTOJ 5769 下棋 题解</h1>
+            <h1 style="display: none">prufer序列 学习笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="DTOJ-5769-下棋-题解"><a href="#DTOJ-5769-下棋-题解" class="headerlink" title="DTOJ 5769 下棋 题解"></a>DTOJ 5769 下棋 题解</h1><h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a target="_blank" rel="noopener" href="http://59.61.75.5:8018/p/P5769">http://59.61.75.5:8018/p/P5769</a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先比较容易想到 $dp$ , 因为任意一段绝对值不超过 $k$ ，所以白棋个数减黑棋个数要在 $[-k,k]$ 区间里，我们于是考虑把状态设为白棋减黑棋个数的最大值和最小值. </p>
-<p>具体来说 $f_{i,j,a,b}$ 表示用了 $i$ 个白，$j$ 个黑， 白减黑最大值和最小值分别为 $a,b$ .</p>
-<p>转移较显然，时间复杂度 $O(n^2k^2)$</p>
-<p>因为 $|i-j|\in[-k,k]$ 所以可以优化到 $O(nk^3)$ ，$f_{i,j,a,b}$ 的 $j$ 表示原来的 $i-j$</p>
-<p>继续优化，考虑将白棋看做向上一步，黑棋看做向右一步，问题即可转化为求到 $(n,m)$ 的方案数，其中路径上点 $\max\{x-y\}-\min\{x-y\}\leq k$， 即路径在 $x-y=k-t$ 和  $x-y=-t$  $(t\in\{0,1,…,k\})$ 两条直线之间. 显然类似卡塔兰数的方格路径计数，因为两条线，需要容斥，时间复杂度 $O(nk)$. </p>
-<p>由于 $\max\{x-y\}-\min\{x-y\} &lt; k$ 的答案会被算多次，需要减去路径在 $x-y=(k-1)-t$ 和  $x-y=-t$  $(t\in\{0,1,…,k-1\})$ 两条直线之间的路径数，还有其他一些细节懒得写. </p>
+                <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>一个小知识，稍微学一下</p>
+<p>其实 prufer 序列就是一种将带标号的树用一个唯一的整数序列表示的方法.</p>
+<p>（小知识 prüfer 是德语，所以应该读作/代码里应该写作 pruefer）</p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>每次选择一个编号最小的叶结点并删掉它，然后在序列中记录下它连接到的那个结点。重复 $n-2$ 次后就只剩下两个结点</p>
+<p>終わった！很简单的啦（</p>
+<h1 id="小性质"><a href="#小性质" class="headerlink" title="小性质"></a>小性质</h1><ol>
+<li>是一个双射（一一对应）</li>
+<li>在构造完 prufer 序列后原树中会剩下两个结点，其中一个一定是编号最大的点</li>
+<li>每个结点在序列中出现的次数是其度数减 $1$（没有出现的就是叶结点）</li>
+</ol>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>代码也很好实现（看代码就看得懂吧，反正博客是给自己看的（bushi）（<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6086">代码的题目链接</a>）</p>
+<p>这个是 $O(n\log n)$ 的做法，有 $O(n)$ 的做法，可惜我不会.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> fa[N],pf[N],deg[N];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">t_to_p</span><span class="hljs-params">()</span> <span class="hljs-comment">//父亲序列转 prufer 序列</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;n; i++) deg[fa[i]]++; <span class="hljs-comment">//记录节点的度</span><br>	priority_queue&lt;<span class="hljs-type">int</span>, vector&lt;<span class="hljs-type">int</span>&gt;, greater&lt;<span class="hljs-type">int</span>&gt; &gt; q; <span class="hljs-comment">//用堆维护</span><br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++) <span class="hljs-keyword">if</span>(deg[i]==<span class="hljs-number">0</span>) q.<span class="hljs-built_in">push</span>(i);<br>	<span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>	&#123;<br>		<span class="hljs-type">int</span> u=q.<span class="hljs-built_in">top</span>(); q.<span class="hljs-built_in">pop</span>();<br>		pf[++cnt]=fa[u]; deg[fa[u]]--; <span class="hljs-keyword">if</span>(deg[fa[u]]==<span class="hljs-number">0</span>) q.<span class="hljs-built_in">push</span>(fa[u]);<br>	&#125; <span class="hljs-comment">//每次把编号最小的叶子结点取出来，更新prufer序列，然后如果原来的父亲成为叶子，再加进去</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">p_to_t</span><span class="hljs-params">()</span> <span class="hljs-comment">// prufer 序列转父亲序列</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++) deg[i]=<span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n<span class="hljs-number">-2</span>; i++) deg[pf[i]]++; <span class="hljs-comment">//根据性质，可以求出节点的度</span><br>	priority_queue&lt;<span class="hljs-type">int</span>, vector&lt;<span class="hljs-type">int</span>&gt;, greater&lt;<span class="hljs-type">int</span>&gt; &gt; q; <span class="hljs-comment">//用堆维护</span><br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++) <span class="hljs-keyword">if</span>(deg[i]==<span class="hljs-number">1</span>) q.<span class="hljs-built_in">push</span>(i);<br>	<span class="hljs-type">int</span> t=<span class="hljs-number">1</span>; pf[n<span class="hljs-number">-1</span>]=n;<br>	<span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>	&#123;<br>		<span class="hljs-type">int</span> u=q.<span class="hljs-built_in">top</span>(); q.<span class="hljs-built_in">pop</span>();<br>		fa[u]=pf[t],t++;<br>		deg[u]--,deg[fa[u]]--;<br>		<span class="hljs-keyword">if</span>(deg[fa[u]]==<span class="hljs-number">1</span>) q.<span class="hljs-built_in">push</span>(fa[u]);<br>	&#125; <span class="hljs-comment">//每次取出编号最小的度数为1的点，然后连向它的父亲（</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="小应用"><a href="#小应用" class="headerlink" title="小应用"></a>小应用</h1><h2 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h2><p><strong>完全图生成树个数（无标号）</strong>（Cayley 公式）</p>
+<p>$n$ 个点，prufer 序列有 $n^{n-2}$ 种，所以生成树个数也是这个.</p>
+<p><strong>完全图生成树个数（有标号）</strong></p>
+<p> $n^{n-2}\cdot n!$ （不然呢？不就是加个顺序</p>
+<h2 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2290">[HNOI2004]树的计数</a></p>
+<p>一个有 $n$ 个节点的树，设它的节点分别为 $v_1,v_2,\cdots,v_n$ ，已知第 $i$ 个节点 $v_i$ 的度数为 $d_i$，问满足这样的条件的不同的树有多少棵.</p>
+<p><strong>题解</strong>：prufer序列中，每个节点出现的次数是 $d_i-1$，所以其实就是一个可重集排列，答案为 $\displaystyle\frac{(n-2)!}{\prod_{i=1}^n (d_i-1)!}$</p>
+<p>有一些特判，$n=1$ 的时候要特判，有度数为零的要特判，度数加起来不等于 $2n-2$ 要特判</p>
+<h2 id="例子3"><a href="#例子3" class="headerlink" title="例子3"></a>例子3</h2><p>还没补题</p>
 
                 
               </div>
@@ -296,11 +310,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/dp/">#dp</a>
+        <a href="/tags/%E5%9B%BE%E8%AE%BA/">#图论</a>
       
-        <a href="/tags/%E7%BB%84%E5%90%88/">#组合</a>
-      
-        <a href="/tags/%E5%AE%B9%E6%96%A5/">#容斥</a>
+        <a href="/tags/prufer%E5%BA%8F%E5%88%97/">#prufer序列</a>
       
     </div>
   
@@ -312,8 +324,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DTOJ 5769 下棋 题解</div>
-      <div>http://coppercarbonate.github.io/2022/10/22/DTOJ-5769-下棋-题解/</div>
+      <div>prufer序列 学习笔记</div>
+      <div>http://coppercarbonate.github.io/2022/11/07/prufer序列-学习笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -325,7 +337,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月22日</div>
+          <div>2022年11月7日</div>
         </div>
       
       
@@ -357,15 +369,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/22/DTOJ-5932-Counting-%E9%A2%98%E8%A7%A3/" title="DTOJ 5932 Counting 题解">
+                      <a href="/2022/11/08/DTOJ-2022-11-08-%E6%B5%8B%E8%AF%95-%E9%A2%98%E8%A7%A3/" title="DTOJ 2022-11-08 测试 题解">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">DTOJ 5932 Counting 题解</span>
+                        <span class="hidden-mobile">DTOJ 2022-11-08 测试 题解</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/11/07/DTOJ-2022-11-07-%E6%B5%8B%E8%AF%95-%E9%A2%98%E8%A7%A3/" title="DTOJ 2022-11-07 测试 题解">
+                        <span class="hidden-mobile">DTOJ 2022-11-07 测试 题解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
